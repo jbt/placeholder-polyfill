@@ -6,7 +6,9 @@
     var $this = $(this);
     if(!$this.is('[type="text"], [type="password"], textarea')) return;
     $this.wrap('<span style="position:relative" />');
-    var l = $('<label/>')
+    var $id = $this.attr('id');
+    if(!$id) $this.attr('id', $id = 'placeholder-' + (0|Math.random()*1000000).toString(36));
+    var l = $('<label for='+$id+'/>')
       .css({
         position: 'absolute',
         cursor: 'text'
