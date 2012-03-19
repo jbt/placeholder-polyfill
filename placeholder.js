@@ -3,10 +3,14 @@
 
   function doPlaceholder(){
     if(alreadySupported) return;
-    var $this = $(this).wrap('<span/>');
+    var $this = $(this);
+    if(!$this.is('[type="text"], [type="password"], textarea')) return;
+    $this.wrap('<span style="position:relative" />');
     var l = $('<label/>')
+      .css({
+        position: 'absolute'
+      })
       .text($this.attr('placeholder'))
-      .click(function(){$this.focus()})
       .insertBefore($this);
 
     $this.bind('change keyup keydown', function(changed){
