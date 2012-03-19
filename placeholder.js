@@ -6,7 +6,7 @@
     var $this = $(this).wrap('<span/>');
     var l = $('<label/>')
       .text($this.attr('placeholder'))
-      .click($this.focus());
+      .click($this.focus())
       .insertBefore($this);
 
     $this.bind('change keyup keydown', function(changed){
