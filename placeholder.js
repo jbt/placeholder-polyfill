@@ -8,7 +8,8 @@
     $this.wrap('<span style="position:relative" />');
     var l = $('<label/>')
       .css({
-        position: 'absolute'
+        position: 'absolute',
+        cursor: 'text'
       })
       .text($this.attr('placeholder'))
       .insertBefore($this);
