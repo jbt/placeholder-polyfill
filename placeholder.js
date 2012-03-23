@@ -18,13 +18,15 @@
       .text($this.attr('placeholder'))
       .insertBefore($this);
 
-    $this.bind('change keyup keydown', function(changed){
+    function update(){
       if($this.val() == ''){
         l.show();
       }else{
         l.hide();
       }
-    });
+    }
+
+    $this.bind('change keyup keydown', update);
 
     $this.focus(function(){
       l.addClass('focused');
@@ -33,6 +35,8 @@
     $this.blur(function(){
       l.removeClass('focused');
     });
+
+    update();
   }
 
   $.fn.placeholder = function(){
