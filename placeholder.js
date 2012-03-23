@@ -1,9 +1,11 @@
-(function($){
+;(function($){
   var alreadySupported = 'placeholder' in document.createElement('input');
 
   function doPlaceholder(){
     if(alreadySupported) return;
     var $this = $(this);
+    if($this.data('placeholder-polyfill'))return;
+    $this.data('placeholder-polyfill', true);
     if(!$this.is('[type="text"], [type="password"], [type="email"], textarea')) return;
     $this.wrap('<span style="position:relative" />');
     var $id = $this.attr('id');
@@ -37,3 +39,5 @@
     return this.each(doPlaceholder);
   };
 })(jQuery);
+
+
