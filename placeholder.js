@@ -4,7 +4,7 @@
   function doPlaceholder(){
     if(alreadySupported) return;
     var $this = $(this);
-    if(!$this.is('[type="text"], [type="password"], textarea')) return;
+    if(!$this.is('[type="text"], [type="password"], [type="email"], textarea')) return;
     $this.wrap('<span style="position:relative" />');
     var $id = $this.attr('id');
     if(!$id) $this.attr('id', $id = 'placeholder-' + (0|Math.random()*1000000).toString(36));
@@ -22,7 +22,15 @@
       }else{
         l.hide();
       }
-    })
+    });
+
+    $this.focus(function(){
+      l.addClass('focused');
+    });
+
+    $this.blur(function(){
+      l.removeClass('focused');
+    });
   }
 
   $.fn.placeholder = function(){
