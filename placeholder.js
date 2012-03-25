@@ -10,13 +10,15 @@
     $this.wrap('<span style="position:relative" />');
     var $id = $this.attr('id');
     if(!$id) $this.attr('id', $id = 'placeholder-' + (0|Math.random()*1000000).toString(36));
-    var l = $('<label for='+$id+'/>')
+    var l = $('<label class="placeholder" for='+$id+'/>')
       .css({
         position: 'absolute',
         cursor: 'text'
       })
       .text($this.attr('placeholder'))
       .insertBefore($this);
+
+    $this.removeAttr('placeholder');
 
     function update(){
       if($this.val() == ''){
@@ -37,6 +39,11 @@
     });
 
     update();
+      
+    // Password managers can be varying degrees of slow.
+    setTimeout(update, 100);
+    setTimeout(update, 500);
+    setTimeout(update, 1000);
   }
 
   $.fn.placeholder = function(){
